@@ -1,0 +1,3 @@
+- npm start -- --versionType=major
+- npm start -- --versionType=minor (default)
+- npm start -- --versionType=patch/fix

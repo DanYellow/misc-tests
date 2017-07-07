@@ -1,0 +1,15 @@
+{
+  "name": "gulp-header",
+  "version": "2.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "gulp"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-bump": "^2.7.0",
+    "gulp-header": "^1.8.8",
+    "yargs": "^8.0.2"
+  }
+}
