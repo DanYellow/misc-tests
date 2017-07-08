@@ -3,7 +3,7 @@ const gulp = require('gulp');
 const bump = require('gulp-bump');
 
 const argv = require('yargs').argv
-const versionType = (!argv.versionType) ? 'minor' : argv.versionType;
+const versionType = (!argv.versionType) ? 'minor' : argv.versionType
 
 const pkg = require('./package.json');
 const banner = `
@@ -16,7 +16,7 @@ const banner = `
    */
 `;
 
-gulp.task('scripts', () => {
+gulp.task('scripts',  () => {
   gulp.src('./src/scripts/*.js')
   .pipe(header(banner, { pkg : pkg }))
   .pipe(bump({ type: versionType }))
@@ -24,9 +24,9 @@ gulp.task('scripts', () => {
 });
 
 gulp.task('versioning', () => {
-  gulp.src(['./package.json'])
+  gulp.src('./package.json')
   .pipe(bump({ type: versionType }))
   .pipe(gulp.dest('./'))
 });
 
-gulp.task('default', ['versioning', 'scripts']);
+gulp.task('default', ['versioning', 'scripts'])

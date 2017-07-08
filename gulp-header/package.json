@@ -1,7 +1,7 @@
 {
   "name": "gulp-header",
-  "version": "2.0.0",
-  "main": "index.js",
+  "version": "2.0.1-4",
+  "main": "gulpfile.js",
   "license": "MIT",
   "scripts": {
     "start": "gulp"
