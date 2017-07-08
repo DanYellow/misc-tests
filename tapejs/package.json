@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "faucet": "^0.0.1",
+    "gulp": "^3.9.1",
+    "gulp-cached": "^1.1.1",
+    "gulp-exec": "^2.1.3",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-tape": "^0.0.9",
+    "gulp-watch": "^4.3.11",
+    "tap-colorize": "^1.2.0",
+    "tape": "^4.7.0"
+  },
+  "name": "tapejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "gulp",
+    "tests": "gulp tests",
+    "test": "tape "
+  },
+  "dependencies": {
+    "gulp-remember": "^0.3.1"
+  }
+}
