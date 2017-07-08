@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  server:
+    image: 'node:latest'
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - '$PWD'
+    ports:
+      - '3000:6000'
+    tty: true
+
