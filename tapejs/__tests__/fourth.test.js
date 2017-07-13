@@ -1,5 +1,4 @@
 const test    = require('tape');
-const request = require('supertest');
 const fetch   = require('node-fetch');
 
 test('timing test 4', async function (t) {

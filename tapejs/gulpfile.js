@@ -1,33 +1,39 @@
-const cache = require('gulp-cached')
-const gulp = require('gulp')
-const tape = require('gulp-tape')
+const gulp        = require('gulp')
+const cache       = require('gulp-cached')
+const tape        = require('gulp-tape')
 const tapColorize = require('tap-colorize')
-const notify = require("gulp-notify")
-const plumber = require('gulp-plumber')
+const notify      = require('gulp-notify')
+const plumber     = require('gulp-plumber')
 
-const fs = require('fs');
-const path = require('path');
+const fs          = require('fs')
+const path        = require('path')
 
-const changed = require('gulp-changed')
+const spec        = require('tap-spec')
 
-var spec = require('tap-spec');
+const remember    = require('gulp-remember')
 
-const remember = require('gulp-remember');
-
-const cacheName = 'unit_tests'
+const cacheName   = 'unit_tests'
 
 
-gulp.task('watch', function(){
-  const watcher = gulp.watch('__tests__/**/*.js');
+function swallowError (error) {
 
-  watcher.on('change', function (event) {
+  // If you want details of the error in the console
+  console.log(error.toString())
+
+  this.emit('end')
+}
+
+gulp.task('watch', () => {
+  const watcher = gulp.watch('__tests__/**/*.js', {debounceDelay: 10000});
+
+  watcher.on('change', (event) => {
     let isUnitTestFile = true;
     if (event.type === 'deleted') {
       delete cache.caches[cacheName][event.path];
 
       return;
     }
-
+ 
     const fileNamePath = event.path.split('.')[event.path.split('.').length - 2];
     if (!event.path.includes('.test.js')) {
       if (!fs.existsSync(`${fileNamePath}.test.js`)) {
@@ -36,42 +42,37 @@ gulp.task('watch', function(){
       isUnitTestFile = false;
     }
 
+    console.log('---- testing ----')
     const fileToTestPath = (isUnitTestFile) ? event.path : `${fileNamePath}.test.js`;
     const fileName = path.basename(fileToTestPath);
-    
-    // if (cache.caches[cacheName][fileToTestPath]) {
-    //   console.log(fileName, 'already tested');
 
-    //   return;
-    // }
-
-    gulp.src(fileToTestPath)
-    // .pipe(cache(cacheName))
-    // .pipe(remember(cacheName))
-    // .pipe(plumber())
-    .pipe(tape({
-      reporter: spec()
-    }).on('error', function() { alert('zffze')})
+    return gulp.src(fileToTestPath)
+      // .pipe(cache(cacheName))
+      .pipe(tape({
+        reporter: spec()
+      })
+      .on('success', function(){ console.log('Done!'); })
     );
-   
-
+    
   });
-});
 
-function onWarning(error) { 
-  console.log('r', error);
-}
+  // .pipe()
+}).on('end', function(){ console.log('Done!'); })
 
 gulp.task('tests', function() {
-  return gulp.src('__tests__/**/*.test.js')
-    .pipe(cache(cacheName))
-    // .pipe(remember(cacheName))
-    .pipe(plumber())
-    .pipe(tape({
-      reporter: spec()
-    }))
+  return gulp.src('__tests__/**/*.testo.js')
+    // .pipe(cache(cacheName))
+    // .pipe(plumber())
+    .pipe(tape())
+    .on('error', onError)
+
 });
 
+function onError(err) {
+  console.log('err', err);
+  this.emit('end');
+}
 
-
-gulp.task('default', ['watch', 'tests']);
+gulp.task('default', ['watch', 'tests'], function() {
+  console.log('ended')
+});
