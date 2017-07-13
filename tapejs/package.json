@@ -10,6 +10,7 @@
     "gulp-plumber": "^1.1.0",
     "gulp-tape": "^0.0.9",
     "gulp-watch": "^4.3.11",
+    "supertest": "^3.0.0",
     "tap-colorize": "^1.2.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.7.0"
@@ -21,9 +22,11 @@
   "scripts": {
     "start": "gulp",
     "tests": "gulp tests",
-    "test": "tape "
+    "test": "tape -r ./__tests__/first.test.js | tap-pessimist"
   },
   "dependencies": {
-    "gulp-remember": "^0.3.1"
+    "gulp-remember": "^0.3.1",
+    "node-fetch": "^1.7.1",
+    "tap-pessimist": "^1.0.1"
   }
 }
