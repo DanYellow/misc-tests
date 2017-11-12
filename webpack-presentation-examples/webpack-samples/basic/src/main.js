@@ -1,4 +1,6 @@
-const factorial = require('./modules/factorial');
+// const factorial = require('./modules/factorial');
+
+import factorial from './modules/factorial';
 
 const input = document.getElementById('factorialy');
 const resultContainer = document.getElementById('result');

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "webpack": "webpack --config=config/webpack.config.js"
+    "webpack": "webpack-dev-server --config=config/webpack.config.js"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +32,8 @@
     "style-loader": "^0.19.0",
     "sugarss": "^1.0.1",
     "url-loader": "^0.6.2",
-    "webpack": "^3.8.1"
+    "uuid": "^3.1.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
   }
 }

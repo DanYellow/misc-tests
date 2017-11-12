@@ -12,10 +12,10 @@ var languages = {
 module.exports = Object.keys(languages).map(function(language) {
 	return {
 		name: language,
-		entry: './src/i18n.js',
+		entry: './src/main.js',
 		output: {
-			path: path.join(__dirname, "dist-i18n"),
-			filename: language + ".output.js"
+			path: path.join(__dirname, "dist"),
+			filename: language + ".bundle.js"
 		},
 		plugins: [
 			new I18nPlugin(

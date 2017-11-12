@@ -1,5 +1,5 @@
-## webpack-samples/basic
-Goal : Show how a basic webpack configuration renders the same result as vanilla browserify
+## webpack-samples/loaders
+Goal : Show how use loaders in webpack
 ______________________________________
 
 ### Commands

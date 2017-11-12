@@ -1,14 +1,15 @@
 class DYMath {
-  factorial(n) {
+  static factorial(n) {
     if (Number.isNaN(n)) {
       return 0;
     }
 
     return [...Array(5 + 1).keys()].reduce((sum, val) => {
-      if (sum === 0) {
-        sum = 1;
+      let sumCopy = sum;
+      if (sumCopy === 0) {
+        sumCopy = 1;
       }
-      return sum * val;
+      return sumCopy * val;
     });
   }
 

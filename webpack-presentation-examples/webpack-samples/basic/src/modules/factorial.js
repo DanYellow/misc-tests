@@ -10,4 +10,6 @@ function factorial (n) {
     return result;
 }
 
-module.exports = factorial;
+// module.exports = factorial;
+
+export default factorial

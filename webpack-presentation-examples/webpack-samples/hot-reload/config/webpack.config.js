@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
@@ -6,6 +7,11 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
 module.exports = {
+  devServer: {
+    contentBase: path.join(__dirname, "../dist"),
+    compress: true,
+    port: 9000
+  },
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -58,6 +64,7 @@ module.exports = {
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '..')
     }),
+    new webpack.HotModuleReplacementPlugin({})
     // new NpmInstallPlugin()
   ]
 };
