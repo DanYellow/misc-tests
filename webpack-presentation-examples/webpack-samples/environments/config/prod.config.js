@@ -5,7 +5,6 @@ const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = merge(baseConfig, {
-    devtool: 'source-map',
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: '[name].bundle.[chunkhash].js',
