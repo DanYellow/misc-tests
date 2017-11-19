@@ -5,8 +5,9 @@ ______________________________________
 ### Commands
 - npm install / yarn install
 - npm run webpack / yarn (run) webpack
-- starts a server (I highly recommand http-server module)
+- starts a server : npm run server
 - Open your favorite browser
 
 ### Browserify alternatives
 - browserify-css
+- css-modulesify

@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   entry: {
       main: './src/main.js',
+      amain: './src/another-main.js',
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -49,10 +50,14 @@ module.exports = {
     new HtmlWebpackPlugin({
         title: 'My App',
         filename: 'index.html',
+        // chunks: ['main', 'common'],
         template: 'config/tpl/main.html'
     }),
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '../')
-    })
+    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'common' // Specify the common bundle's name.
+    // })
   ]
 };
