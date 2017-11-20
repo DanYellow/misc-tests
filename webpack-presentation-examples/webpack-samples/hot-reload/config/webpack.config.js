@@ -10,12 +10,18 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
+    hot: true,
+    open: true,
     port: 9000,
     after () {
       console.log('ready')
     }
   },
-  entry: './src/main.js',
+  entry: [
+    // 'react-hot-loader/patch',  // For react and css
+    // './src/main.react.js', // For react and css
+    './src/main.js', // Classic hot-reload module js and css
+  ],
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].[hash].js'
@@ -58,7 +64,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin("[name].[contenthash].css"),
+    new ExtractTextPlugin({
+      filename: "[name].[contenthash].css",
+      disable: true
+    }),
     new HtmlWebpackPlugin({
         title: 'My App',
         filename: `index.html`,
@@ -67,7 +76,8 @@ module.exports = {
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '..')
     }),
-    new webpack.HotModuleReplacementPlugin({})
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
     // new NpmInstallPlugin()
   ]
 };
