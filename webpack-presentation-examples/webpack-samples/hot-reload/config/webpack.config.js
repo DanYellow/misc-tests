@@ -6,78 +6,80 @@ const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
-module.exports = {
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    hot: true,
-    open: true,
-    port: 9000,
-    after () {
-      console.log('ready')
-    }
-  },
-  entry: [
-    // 'react-hot-loader/patch',  // For react and css
-    // './src/main.react.js', // For react and css
-    './src/main.js', // Classic hot-reload module js and css
-  ],
-  output: {
-    path: path.resolve(__dirname, '../dist'),
-    filename: '[name].[hash].js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-      {
-        test: /\.(css|pcss)$/, 
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            { loader: 'css-loader', options: { 
-              importLoaders: 1, 
-              sourceMap: true,
-              modules: true,
-              localIdentName: '[name]__[local]___[hash:base64:5]'
-            }},
-            'postcss-loader'
-          ]
-        })
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192 // bytes
-            }
-          }
-        ]
+
+
+module.exports = (env) => {
+  // MODE react enables HMR for react components
+  const entries = (env.mode !== 'react') ? ['./src/main.js'] : ['react-hot-loader/patch', './src/main.react.js']
+  return {
+    devServer: {
+      contentBase: path.join(__dirname, "dist"),
+      compress: true,
+      hot: true,
+      open: true,
+      port: 9000,
+      after () {
+        console.log('ready')
       }
+    },
+    entry: [...entries],
+    output: {
+      path: path.resolve(__dirname, '../dist'),
+      filename: '[name].[hash].js'
+    },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /(node_modules)/,
+          use: {
+            loader: 'babel-loader'
+          }
+        },
+        {
+          test: /\.(css|pcss)$/, 
+          use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: [
+              { loader: 'css-loader', options: { 
+                importLoaders: 1, 
+                sourceMap: true,
+                modules: true,
+                localIdentName: '[name]__[local]___[hash:base64:5]'
+              }},
+              'postcss-loader'
+            ]
+          })
+        },
+        {
+          test: /\.(jpe?g|png|gif|svg)$/i,
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 8192 // bytes
+              }
+            }
+          ]
+        }
+      ]
+    },
+    plugins: [
+      new ExtractTextPlugin({
+        filename: "[name].[contenthash].css",
+        disable: true
+      }),
+      new HtmlWebpackPlugin({
+          title: 'My App',
+          filename: `index.html`,
+          template: 'config/tpl/main.html'
+      }),
+      new CleanWebpackPlugin(['dist'], {
+        root: path.resolve(__dirname, '..')
+      }),
+      new webpack.NamedModulesPlugin(),
+      new webpack.HotModuleReplacementPlugin()
+      // new NpmInstallPlugin()
     ]
-  },
-  plugins: [
-    new ExtractTextPlugin({
-      filename: "[name].[contenthash].css",
-      disable: true
-    }),
-    new HtmlWebpackPlugin({
-        title: 'My App',
-        filename: `index.html`,
-        template: 'config/tpl/main.html'
-    }),
-    new CleanWebpackPlugin(['dist'], {
-      root: path.resolve(__dirname, '..')
-    }),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
-    // new NpmInstallPlugin()
-  ]
+  }
 };
