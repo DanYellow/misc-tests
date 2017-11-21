@@ -7,7 +7,7 @@ const rootPkgJSONDependancies = {...JSON.parse(rootPkgJSONContent).dependencies}
 
 const localPath = Object.keys(rootPkgJSONDependancies).map(function(key, index) {
     return [[`${key}`], `file:../${key}`]
- })
+})
 
 const obj = {};
 localPath.forEach(function(data){
