@@ -3,8 +3,12 @@ import React from 'react';
 
 // import './reset.css'
 import HelloMessage from './components/hello-message'
+import Counter from './components/counter'
 
 ReactDOM.render(
-    <HelloMessage name="Mtlf !" />,
+    <div>
+      <HelloMessage name="Mtlof !" />
+      <Counter />
+    </div>,
     document.getElementById('app')
   );

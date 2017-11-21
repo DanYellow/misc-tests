@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "bro": "gulp js",
-    "server": "http-server ./dist -o",
-    "foo": "node_modules/.bin/watchify src/main.js -t babelify -p livereactload -o dist/foo.js"
+    "server": "http-server ./dist -o"
   },
   "keywords": [],
   "author": "",
