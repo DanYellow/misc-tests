@@ -1,0 +1,27 @@
+{
+    "name": "front-end",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "babel": "browserify main.js -o dist/bundle.js -t babelify",
+        "server": "http-server dist -o -c-1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "lodash": "file:../lodash",
+        "moment": "file:../moment",
+        "react": "file:../react",
+        "react-dom": "file:../react-dom"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-plugin-transform-react-jsx": "^6.24.1",
+        "babel-preset-latest": "^6.24.1",
+        "babelify": "^8.0.0",
+        "browserify": "^14.5.0",
+        "http-server": "^0.10.0"
+    }
+}
