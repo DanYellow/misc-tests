@@ -50,14 +50,20 @@ module.exports = {
     new HtmlWebpackPlugin({
         title: 'My App',
         filename: 'index.html',
-        // chunks: ['main', 'common'],
+        chunks: ['main', 'common'],
         template: 'config/tpl/main.html'
     }),
+    new HtmlWebpackPlugin({
+      title: 'My App',
+      filename: 'index.split.html',
+      chunks: ['amain', 'common'],
+      template: 'config/tpl/main.html'
+  }),
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '../')
     }),
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'common' // Specify the common bundle's name.
-    // })
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common' // Specify the common bundle's name.
+    })
   ]
 };

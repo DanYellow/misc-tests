@@ -17,11 +17,11 @@ class HelloMessage extends React.Component {
         this.setState({
             name: reverse(this.state.name.split('')).join('')
         })
-        // import('lodash').then(({reverse}) => {
-        //     this.setState({
-        //         name: reverse(this.state.name.split('')).join('')
-        //     })
-        // })
+        import('lodash').then(({reverse}) => {
+            this.setState({
+                name: reverse(this.state.name.split('')).join('')
+            })
+        })
     }
 
     render() {

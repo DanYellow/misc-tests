@@ -5,12 +5,9 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-
-
-
 module.exports = (env) => {
   // MODE react enables HMR for react components
-  const entries = (env.mode !== 'react') ? ['./src/main.js'] : ['react-hot-loader/patch', './src/main.react.js']
+  const entries = (!env || env.mode !== 'react') ? ['./src/main.js'] : ['react-hot-loader/patch', './src/main.react.js']
   return {
     devServer: {
       contentBase: path.join(__dirname, "dist"),
@@ -19,7 +16,7 @@ module.exports = (env) => {
       open: true,
       port: 9000,
       after () {
-        console.log('ready')
+        console.log('server ready')
       }
     },
     entry: [...entries],

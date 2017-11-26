@@ -5,6 +5,6 @@ import './reset.css'
 import HelloMessage from './components/hello-message'
 
 ReactDOM.render(
-    <HelloMessage name="Québec !" />,
+    <HelloMessage name="Montreal !" />,
     document.getElementById('app')
   );
