@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "webpack": "webpack-dev-server --config=config/webpack.config.js",
-    "webpack:react": "webpack-dev-server --config=config/webpack.config.js --env.mode=react"
+    "webpack:react": "webpack-dev-server --config=config/webpack.config.js --env.mode=react",
+    "server": "http-server dist -c-1",
+    "web": "webpack  --config=config/webpack.config.js"
   },
   "keywords": [],
   "author": "",
@@ -37,6 +39,7 @@
     "url-loader": "^0.6.2",
     "uuid": "^3.1.0",
     "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4"
+    "webpack-dev-server": "^2.9.4",
+    "webpack-hot-middleware": "^2.20.0"
   }
 }

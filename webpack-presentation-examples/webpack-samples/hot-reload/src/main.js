@@ -1,4 +1,4 @@
 import './reset.css'
 import './main.css'
 
-console.log("Test hot reload 4U")
+console.log("Test hot reload 4U2R")
