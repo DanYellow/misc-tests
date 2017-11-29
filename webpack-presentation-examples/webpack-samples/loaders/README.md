@@ -6,4 +6,4 @@ ______________________________________
 - npm install / yarn install
 - npm run webpack / yarn (run) webpack
 - starts a server (I highly recommand http-server module)
-- Open your favorite browsera
+- Open your favorite browser

@@ -5,7 +5,9 @@ ______________________________________
 ### Commands
 - npm install / yarn install
 - npm run webpack / yarn (run) webpack
-- starts a server (I highly recommand http-server module)
+    - webpack to create a simple bundling
+    - webpack:split to create a splitted bundle
+- npm run server to run a node server
 - Open your favorite browser
 
 ### Browserify alternatives

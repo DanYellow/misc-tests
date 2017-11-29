@@ -1,9 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const I18nPlugin = require("i18n-webpack-plugin");
-// const CleanWebpackPlugin = require('clean-webpack-plugin')
 
-var languages = {
+const languages = {
 	"en": null,
 	"fr": require("./src/i18n/fr.json"),
 	"es": require("./src/i18n/es.json"),
