@@ -7,6 +7,7 @@ module.exports = {
   entry: {
       main: './src/main.js',
       amain: './src/another-main.js',
+      main3: './src/main3.js',
   },
   output: {
     path: path.resolve(__dirname, '../dist'),

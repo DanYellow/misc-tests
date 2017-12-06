@@ -1,0 +1,20 @@
+{
+  "name": "basic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "my-module": "git+https://git@github.com/DanYellow/my-module.git"
+  },
+  "devDependencies": {
+    "http-server": "^0.10.0",
+    "webpack": "^3.8.1"
+  },
+  "scripts": {
+    "webpack": "webpack",
+    "server": "http-server ./ -c-1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
